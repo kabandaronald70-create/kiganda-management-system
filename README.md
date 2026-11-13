@@ -13,3 +13,5 @@ A full-stack school management system for Highway S.S Kiganda.
 - Next.js (App Router)
 - TypeScript
 - Tailwind CSS
+
+Initial setup complete.
