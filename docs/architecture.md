@@ -9,7 +9,8 @@
 - `/students` (Admin: Student List)
 - `/students/[id]` (Admin: Student Detail)
 - `/marks` (Teacher: Marks Entry)
-- `/fees` (Bursar: Fee Tracking)
+- `/attendance` (Teacher: Attendance Entry)
+- `/fees` (Bursar: Fee Tracking & Payments)
 
 **Reusable Components:**
 
@@ -23,16 +24,18 @@
 
 **Core Entities:**
 
-1. **User:** id, email, password_hash, role (admin/teacher/parent).
+1. **User:** id, email, password_hash, role (admin, teacher, parent, bursar).
 2. **Student:** id, first_name, last_name, class (S1-S6), stream, guardian_id (Foreign Key).
-3. **Mark:** id, student_id, subject, term, score, grade.
-4. **FeePayment:** id, student_id, amount, date, receipt_number.
+3. **Mark:** id, student_id, subject, term, academic_year, score, grade.
+4. **Attendance:** id, student_id, date, status (present/absent).
+5. **FeePayment:** id, student_id, amount, date, receipt_number (Unique), idempotency_key.
+6. **FeeAssessment:** id, class, term, amount_due.
 
 **Relationships:**
 
 - One User (Parent) has Many Students (One-to-Many).
-- One Student has Many Marks (One-to-Many).
-- One Student has Many FeePayments (One-to-Many).
+- One Student has Many Marks, Attendances, and FeePayments (One-to-Many).
+- One FeeAssessment applies to a whole Class (One-to-Many).
 
 ## 3. Design Theme & Branding
 
