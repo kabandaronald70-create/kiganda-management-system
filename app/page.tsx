@@ -3,9 +3,11 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 p-6 text-center">
-      <h1 className="text-5xl font-bold text-blue-600 mb-4">Kiganda SMS</h1>
+      <h1 className="text-5xl font-bold text-blue-600 mb-4">
+        Highway SS Management System
+      </h1>
       <p className="text-xl text-gray-600 mb-8">
-        Welcome to the Kiganda Management System
+        Welcome to the Highway SS Management System
       </p>
       <div className="flex gap-4">
         <Link
