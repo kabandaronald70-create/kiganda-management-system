@@ -26,7 +26,7 @@ model Student {
   marks      Mark[]
   attendance Attendance[]
   fees       FeePayment[]
-  isArchived Boolean @default(false)
+  isArchived Boolean      @default(false) // <-- ADD THIS LINE
 }
 
 model Mark {
