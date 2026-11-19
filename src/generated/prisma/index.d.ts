@@ -2553,6 +2553,7 @@ export namespace Prisma {
     class: string | null
     stream: string | null
     guardianId: number | null
+    isArchived: boolean | null
   }
 
   export type StudentMaxAggregateOutputType = {
@@ -2562,6 +2563,7 @@ export namespace Prisma {
     class: string | null
     stream: string | null
     guardianId: number | null
+    isArchived: boolean | null
   }
 
   export type StudentCountAggregateOutputType = {
@@ -2571,6 +2573,7 @@ export namespace Prisma {
     class: number
     stream: number
     guardianId: number
+    isArchived: number
     _all: number
   }
 
@@ -2592,6 +2595,7 @@ export namespace Prisma {
     class?: true
     stream?: true
     guardianId?: true
+    isArchived?: true
   }
 
   export type StudentMaxAggregateInputType = {
@@ -2601,6 +2605,7 @@ export namespace Prisma {
     class?: true
     stream?: true
     guardianId?: true
+    isArchived?: true
   }
 
   export type StudentCountAggregateInputType = {
@@ -2610,6 +2615,7 @@ export namespace Prisma {
     class?: true
     stream?: true
     guardianId?: true
+    isArchived?: true
     _all?: true
   }
 
@@ -2706,6 +2712,7 @@ export namespace Prisma {
     class: string
     stream: string
     guardianId: number
+    isArchived: boolean
     _count: StudentCountAggregateOutputType | null
     _avg: StudentAvgAggregateOutputType | null
     _sum: StudentSumAggregateOutputType | null
@@ -2734,6 +2741,7 @@ export namespace Prisma {
     class?: boolean
     stream?: boolean
     guardianId?: boolean
+    isArchived?: boolean
     guardian?: boolean | UserDefaultArgs<ExtArgs>
     marks?: boolean | Student$marksArgs<ExtArgs>
     attendance?: boolean | Student$attendanceArgs<ExtArgs>
@@ -2748,6 +2756,7 @@ export namespace Prisma {
     class?: boolean
     stream?: boolean
     guardianId?: boolean
+    isArchived?: boolean
     guardian?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["student"]>
 
@@ -2758,6 +2767,7 @@ export namespace Prisma {
     class?: boolean
     stream?: boolean
     guardianId?: boolean
+    isArchived?: boolean
     guardian?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["student"]>
 
@@ -2768,9 +2778,10 @@ export namespace Prisma {
     class?: boolean
     stream?: boolean
     guardianId?: boolean
+    isArchived?: boolean
   }
 
-  export type StudentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "class" | "stream" | "guardianId", ExtArgs["result"]["student"]>
+  export type StudentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "class" | "stream" | "guardianId" | "isArchived", ExtArgs["result"]["student"]>
   export type StudentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     guardian?: boolean | UserDefaultArgs<ExtArgs>
     marks?: boolean | Student$marksArgs<ExtArgs>
@@ -2800,6 +2811,7 @@ export namespace Prisma {
       class: string
       stream: string
       guardianId: number
+      isArchived: boolean
     }, ExtArgs["result"]["student"]>
     composites: {}
   }
@@ -3233,6 +3245,7 @@ export namespace Prisma {
     readonly class: FieldRef<"Student", 'String'>
     readonly stream: FieldRef<"Student", 'String'>
     readonly guardianId: FieldRef<"Student", 'Int'>
+    readonly isArchived: FieldRef<"Student", 'Boolean'>
   }
     
 
@@ -8120,7 +8133,8 @@ export namespace Prisma {
     lastName: 'lastName',
     class: 'class',
     stream: 'stream',
-    guardianId: 'guardianId'
+    guardianId: 'guardianId',
+    isArchived: 'isArchived'
   };
 
   export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
@@ -8229,6 +8243,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -8321,6 +8342,7 @@ export namespace Prisma {
     class?: StringFilter<"Student"> | string
     stream?: StringFilter<"Student"> | string
     guardianId?: IntFilter<"Student"> | number
+    isArchived?: BoolFilter<"Student"> | boolean
     guardian?: XOR<UserScalarRelationFilter, UserWhereInput>
     marks?: MarkListRelationFilter
     attendance?: AttendanceListRelationFilter
@@ -8334,6 +8356,7 @@ export namespace Prisma {
     class?: SortOrder
     stream?: SortOrder
     guardianId?: SortOrder
+    isArchived?: SortOrder
     guardian?: UserOrderByWithRelationInput
     marks?: MarkOrderByRelationAggregateInput
     attendance?: AttendanceOrderByRelationAggregateInput
@@ -8350,6 +8373,7 @@ export namespace Prisma {
     class?: StringFilter<"Student"> | string
     stream?: StringFilter<"Student"> | string
     guardianId?: IntFilter<"Student"> | number
+    isArchived?: BoolFilter<"Student"> | boolean
     guardian?: XOR<UserScalarRelationFilter, UserWhereInput>
     marks?: MarkListRelationFilter
     attendance?: AttendanceListRelationFilter
@@ -8363,6 +8387,7 @@ export namespace Prisma {
     class?: SortOrder
     stream?: SortOrder
     guardianId?: SortOrder
+    isArchived?: SortOrder
     _count?: StudentCountOrderByAggregateInput
     _avg?: StudentAvgOrderByAggregateInput
     _max?: StudentMaxOrderByAggregateInput
@@ -8380,6 +8405,7 @@ export namespace Prisma {
     class?: StringWithAggregatesFilter<"Student"> | string
     stream?: StringWithAggregatesFilter<"Student"> | string
     guardianId?: IntWithAggregatesFilter<"Student"> | number
+    isArchived?: BoolWithAggregatesFilter<"Student"> | boolean
   }
 
   export type MarkWhereInput = {
@@ -8667,6 +8693,7 @@ export namespace Prisma {
     lastName: string
     class: string
     stream: string
+    isArchived?: boolean
     guardian: UserCreateNestedOneWithoutStudentsInput
     marks?: MarkCreateNestedManyWithoutStudentInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
@@ -8680,6 +8707,7 @@ export namespace Prisma {
     class: string
     stream: string
     guardianId: number
+    isArchived?: boolean
     marks?: MarkUncheckedCreateNestedManyWithoutStudentInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
     fees?: FeePaymentUncheckedCreateNestedManyWithoutStudentInput
@@ -8690,6 +8718,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     guardian?: UserUpdateOneRequiredWithoutStudentsNestedInput
     marks?: MarkUpdateManyWithoutStudentNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
@@ -8703,6 +8732,7 @@ export namespace Prisma {
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
     guardianId?: IntFieldUpdateOperationsInput | number
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     marks?: MarkUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
     fees?: FeePaymentUncheckedUpdateManyWithoutStudentNestedInput
@@ -8715,6 +8745,7 @@ export namespace Prisma {
     class: string
     stream: string
     guardianId: number
+    isArchived?: boolean
   }
 
   export type StudentUpdateManyMutationInput = {
@@ -8722,6 +8753,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type StudentUncheckedUpdateManyInput = {
@@ -8731,6 +8763,7 @@ export namespace Prisma {
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
     guardianId?: IntFieldUpdateOperationsInput | number
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MarkCreateInput = {
@@ -9048,6 +9081,11 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -9090,6 +9128,7 @@ export namespace Prisma {
     class?: SortOrder
     stream?: SortOrder
     guardianId?: SortOrder
+    isArchived?: SortOrder
   }
 
   export type StudentAvgOrderByAggregateInput = {
@@ -9104,6 +9143,7 @@ export namespace Prisma {
     class?: SortOrder
     stream?: SortOrder
     guardianId?: SortOrder
+    isArchived?: SortOrder
   }
 
   export type StudentMinOrderByAggregateInput = {
@@ -9113,11 +9153,20 @@ export namespace Prisma {
     class?: SortOrder
     stream?: SortOrder
     guardianId?: SortOrder
+    isArchived?: SortOrder
   }
 
   export type StudentSumOrderByAggregateInput = {
     id?: SortOrder
     guardianId?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type StudentScalarRelationFilter = {
@@ -9462,6 +9511,10 @@ export namespace Prisma {
     connect?: FeePaymentWhereUniqueInput | FeePaymentWhereUniqueInput[]
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateOneRequiredWithoutStudentsNestedInput = {
     create?: XOR<UserCreateWithoutStudentsInput, UserUncheckedCreateWithoutStudentsInput>
     connectOrCreate?: UserCreateOrConnectWithoutStudentsInput
@@ -9681,6 +9734,19 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -9769,6 +9835,7 @@ export namespace Prisma {
     lastName: string
     class: string
     stream: string
+    isArchived?: boolean
     marks?: MarkCreateNestedManyWithoutStudentInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
     fees?: FeePaymentCreateNestedManyWithoutStudentInput
@@ -9780,6 +9847,7 @@ export namespace Prisma {
     lastName: string
     class: string
     stream: string
+    isArchived?: boolean
     marks?: MarkUncheckedCreateNestedManyWithoutStudentInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
     fees?: FeePaymentUncheckedCreateNestedManyWithoutStudentInput
@@ -9821,6 +9889,7 @@ export namespace Prisma {
     class?: StringFilter<"Student"> | string
     stream?: StringFilter<"Student"> | string
     guardianId?: IntFilter<"Student"> | number
+    isArchived?: BoolFilter<"Student"> | boolean
   }
 
   export type UserCreateWithoutStudentsInput = {
@@ -10026,6 +10095,7 @@ export namespace Prisma {
     lastName: string
     class: string
     stream: string
+    isArchived?: boolean
     guardian: UserCreateNestedOneWithoutStudentsInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
     fees?: FeePaymentCreateNestedManyWithoutStudentInput
@@ -10038,6 +10108,7 @@ export namespace Prisma {
     class: string
     stream: string
     guardianId: number
+    isArchived?: boolean
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
     fees?: FeePaymentUncheckedCreateNestedManyWithoutStudentInput
   }
@@ -10063,6 +10134,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     guardian?: UserUpdateOneRequiredWithoutStudentsNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
     fees?: FeePaymentUpdateManyWithoutStudentNestedInput
@@ -10075,6 +10147,7 @@ export namespace Prisma {
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
     guardianId?: IntFieldUpdateOperationsInput | number
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
     fees?: FeePaymentUncheckedUpdateManyWithoutStudentNestedInput
   }
@@ -10084,6 +10157,7 @@ export namespace Prisma {
     lastName: string
     class: string
     stream: string
+    isArchived?: boolean
     guardian: UserCreateNestedOneWithoutStudentsInput
     marks?: MarkCreateNestedManyWithoutStudentInput
     fees?: FeePaymentCreateNestedManyWithoutStudentInput
@@ -10096,6 +10170,7 @@ export namespace Prisma {
     class: string
     stream: string
     guardianId: number
+    isArchived?: boolean
     marks?: MarkUncheckedCreateNestedManyWithoutStudentInput
     fees?: FeePaymentUncheckedCreateNestedManyWithoutStudentInput
   }
@@ -10121,6 +10196,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     guardian?: UserUpdateOneRequiredWithoutStudentsNestedInput
     marks?: MarkUpdateManyWithoutStudentNestedInput
     fees?: FeePaymentUpdateManyWithoutStudentNestedInput
@@ -10133,6 +10209,7 @@ export namespace Prisma {
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
     guardianId?: IntFieldUpdateOperationsInput | number
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     marks?: MarkUncheckedUpdateManyWithoutStudentNestedInput
     fees?: FeePaymentUncheckedUpdateManyWithoutStudentNestedInput
   }
@@ -10142,6 +10219,7 @@ export namespace Prisma {
     lastName: string
     class: string
     stream: string
+    isArchived?: boolean
     guardian: UserCreateNestedOneWithoutStudentsInput
     marks?: MarkCreateNestedManyWithoutStudentInput
     attendance?: AttendanceCreateNestedManyWithoutStudentInput
@@ -10154,6 +10232,7 @@ export namespace Prisma {
     class: string
     stream: string
     guardianId: number
+    isArchived?: boolean
     marks?: MarkUncheckedCreateNestedManyWithoutStudentInput
     attendance?: AttendanceUncheckedCreateNestedManyWithoutStudentInput
   }
@@ -10179,6 +10258,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     guardian?: UserUpdateOneRequiredWithoutStudentsNestedInput
     marks?: MarkUpdateManyWithoutStudentNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
@@ -10191,6 +10271,7 @@ export namespace Prisma {
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
     guardianId?: IntFieldUpdateOperationsInput | number
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     marks?: MarkUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
   }
@@ -10201,6 +10282,7 @@ export namespace Prisma {
     lastName: string
     class: string
     stream: string
+    isArchived?: boolean
   }
 
   export type StudentUpdateWithoutGuardianInput = {
@@ -10208,6 +10290,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     marks?: MarkUpdateManyWithoutStudentNestedInput
     attendance?: AttendanceUpdateManyWithoutStudentNestedInput
     fees?: FeePaymentUpdateManyWithoutStudentNestedInput
@@ -10219,6 +10302,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
     marks?: MarkUncheckedUpdateManyWithoutStudentNestedInput
     attendance?: AttendanceUncheckedUpdateManyWithoutStudentNestedInput
     fees?: FeePaymentUncheckedUpdateManyWithoutStudentNestedInput
@@ -10230,6 +10314,7 @@ export namespace Prisma {
     lastName?: StringFieldUpdateOperationsInput | string
     class?: StringFieldUpdateOperationsInput | string
     stream?: StringFieldUpdateOperationsInput | string
+    isArchived?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MarkCreateManyStudentInput = {

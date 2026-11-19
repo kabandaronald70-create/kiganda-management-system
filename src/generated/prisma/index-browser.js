@@ -133,7 +133,8 @@ exports.Prisma.StudentScalarFieldEnum = {
   lastName: 'lastName',
   class: 'class',
   stream: 'stream',
-  guardianId: 'guardianId'
+  guardianId: 'guardianId',
+  isArchived: 'isArchived'
 };
 
 exports.Prisma.MarkScalarFieldEnum = {
