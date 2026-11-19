@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  email    String    @unique
+  password String
+  role     String // admin, teacher, parent, bursar
+  students Student[]
+}
+
+model Student {
+  id         Int          @id @default(autoincrement())
+  firstName  String
+  lastName   String
+  class      String // S1-S6
+  stream     String
+  guardianId Int
+  guardian   User         @relation(fields: [guardianId], references: [id])
+  marks      Mark[]
+  attendance Attendance[]
+  fees       FeePayment[]
+  isArchived Boolean      @default(false) // <-- ADD THIS LINE
+}
+
+model Mark {
+  id           Int     @id @default(autoincrement())
+  studentId    Int
+  student      Student @relation(fields: [studentId], references: [id])
+  subject      String
+  term         String
+  academicYear Int
+  score        Int
+  grade        String
+}
+
+model Attendance {
+  id        Int      @id @default(autoincrement())
+  studentId Int
+  student   Student  @relation(fields: [studentId], references: [id])
+  date      DateTime
+  status    String // present, absent
+}
+
+model FeePayment {
+  id             Int      @id @default(autoincrement())
+  studentId      Int
+  student        Student  @relation(fields: [studentId], references: [id])
+  amount         Float
+  date           DateTime
+  receiptNumber  String   @unique
+  idempotencyKey String?  @unique
+}
+
+model FeeAssessment {
+  id        Int    @id @default(autoincrement())
+  class     String
+  term      String
+  amountDue Float
+}
