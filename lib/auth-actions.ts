@@ -3,6 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 export async function registerUser(formData: FormData) {
   const email = formData.get('email') as string;
@@ -30,4 +31,18 @@ export async function registerUser(formData: FormData) {
   }
 
   redirect('/login');
+}
+
+export async function archiveStudent(id: number) {
+  try {
+    await prisma.student.update({
+      where: { id },
+      data: { isArchived: true },
+    });
+  } catch (error) {
+    console.error('Failed to archive student:', error);
+    throw new Error('Failed to archive student');
+  }
+
+  revalidatePath('/dashboard');
 }

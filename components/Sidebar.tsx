@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 import { useState } from 'react';
 
 export default function Sidebar() {
@@ -38,7 +39,7 @@ export default function Sidebar() {
       <aside
         className={`fixed inset-y-0 left-0 z-40 w-64 bg-slate-800 text-white transform transition-transform duration-200 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:relative md:translate-x-0 min-h-screen p-4 flex flex-col`}
       >
-        <div className="text-2xl font-bold mb-8 text-blue-400">Kiganda SMS</div>
+        <div className="text-2xl font-bold mb-8 text-blue-400">Highway SMS</div>
 
         <nav className="flex-1">
           <ul className="space-y-2">
@@ -66,6 +67,14 @@ export default function Sidebar() {
         <div className="mt-auto pt-4 border-t border-slate-700">
           <p className="text-sm text-slate-400">Role: {userRole}</p>
         </div>
+
+        <button
+          type="button"
+          onClick={() => signOut({ callbackUrl: '/' })}
+          className="mt-4 w-full rounded bg-red-600 px-4 py-2 text-left font-semibold transition-colors hover:bg-red-700"
+        >
+          Sign Out
+        </button>
       </aside>
     </>
   );
